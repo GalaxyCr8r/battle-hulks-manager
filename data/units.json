@@ -1,0 +1,151 @@
+{
+  "$schema_notes": {
+    "bands": "Stat arrays are [green, yellow, red] — the value used depends on the unit's current Structure damage band.",
+    "atk_strings": "Equipment ATK values are card-faithful strings per band. AHM values like '3/2' mean Ground Detonation / Air Detonation damage dice.",
+    "strBands": "Inclusive [min, max] Structure values for each color band on the STR track.",
+    "range": "Inches. min > 0 means the weapon cannot fire at closer targets (AHM-style minimum range).",
+    "source": "Values transcribed from the official Battle Hulks Mk.I unit cards (Fat Dragon Games, 2026). Game statistics only; no card artwork is reproduced."
+  },
+  "units": [
+    {
+      "id": 1,
+      "name": "Storm Hulk Mk.I",
+      "unitType": "hulk",
+      "size": "Medium",
+      "points": 150,
+      "def": [3, 2, 1],
+      "atk": [4, 3, 2],
+      "mov": [6, 5, 4],
+      "fuel": 8,
+      "maxHeat": 4,
+      "armor": 8,
+      "structure": 8,
+      "strBands": { "red": [0, 2], "yellow": [3, 5], "green": [6, 8] },
+      "equipment": [
+        { "name": "Chain Guns", "weaponType": "Chain Gun", "damage": "kinetic", "range": { "min": 0, "max": 12 }, "ammo": "Armor Piercing", "atk": ["3", "3", "2"] },
+        { "name": "Chain Guns", "weaponType": "Chain Gun", "damage": "kinetic", "range": { "min": 0, "max": 12 }, "ammo": "Explosive", "atk": ["3", "3", "2"] },
+        { "name": "AHM x6", "weaponType": "AHM", "damage": "kinetic", "range": { "min": 8, "max": 16 }, "count": 6, "atk": ["3/2", "3/2", "3/2"] }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Dusk Reaper Mk.I",
+      "unitType": "hulk",
+      "size": "Medium",
+      "points": 160,
+      "def": [3, 2, 1],
+      "atk": [4, 3, 2],
+      "mov": [7, 6, 5],
+      "fuel": 10,
+      "maxHeat": 3,
+      "armor": 6,
+      "structure": 7,
+      "strBands": { "red": [0, 2], "yellow": [3, 5], "green": [6, 7] },
+      "equipment": [
+        { "name": "Laser Cannon", "weaponType": "Laser Cannon", "damage": "energy", "range": { "min": 0, "max": 15 }, "atk": ["3", "3", "2"] },
+        { "name": "Laser Cannon", "weaponType": "Laser Cannon", "damage": "energy", "range": { "min": 0, "max": 15 }, "atk": ["3", "3", "2"] },
+        { "name": "AHM x6", "weaponType": "AHM", "damage": "kinetic", "range": { "min": 8, "max": 16 }, "count": 6, "atk": ["3/2", "3/2", "3/2"] }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Void Knight Mk.I",
+      "unitType": "hulk",
+      "size": "Medium",
+      "points": 135,
+      "def": [4, 3, 2],
+      "atk": [3, 3, 2],
+      "mov": [8, 7, 6],
+      "fuel": 10,
+      "maxHeat": 3,
+      "armor": 6,
+      "structure": 5,
+      "strBands": { "red": [0, 2], "yellow": [3, 4], "green": [5, 5] },
+      "equipment": [
+        { "name": "Rockets", "weaponType": "Rocket", "damage": "kinetic", "range": { "min": 4, "max": 12 }, "count": 16, "atk": ["1", "1", "1"] },
+        { "name": "Rockets", "weaponType": "Rocket", "damage": "kinetic", "range": { "min": 4, "max": 12 }, "count": 16, "atk": ["1", "1", "1"] },
+        { "name": "Plasma Gun", "weaponType": "Plasma Gun", "damage": "energy", "range": { "min": 0, "max": 14 }, "atk": ["3", "3", "2"] },
+        { "name": "Ablative Armor 2pts", "weaponType": "Ablative Armor", "damage": "energy", "armorPoints": 2 }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Steel Crusader Mk.I",
+      "unitType": "hulk",
+      "size": "Medium",
+      "points": 155,
+      "def": [3, 2, 1],
+      "atk": [5, 4, 3],
+      "mov": [7, 6, 5],
+      "fuel": 9,
+      "maxHeat": 4,
+      "armor": 6,
+      "structure": 6,
+      "strBands": { "red": [0, 2], "yellow": [3, 4], "green": [5, 6] },
+      "equipment": [
+        { "name": "Plasma Cannon", "weaponType": "Plasma Cannon", "damage": "energy", "range": { "min": 0, "max": 13 }, "atk": ["3", "3", "2"] },
+        { "name": "Plasma Cannon", "weaponType": "Plasma Cannon", "damage": "energy", "range": { "min": 0, "max": 13 }, "atk": ["3", "3", "2"] },
+        { "name": "AHM x6", "weaponType": "AHM", "damage": "kinetic", "range": { "min": 8, "max": 16 }, "count": 6, "atk": ["3/2", "3/2", "3/2"] },
+        { "name": "Reactive Armor 2pts", "weaponType": "Reactive Armor", "damage": "kinetic", "armorPoints": 2 }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Iron Guardian Mk.I",
+      "unitType": "hulk",
+      "size": "Medium",
+      "points": 125,
+      "def": [3, 2, 1],
+      "atk": [4, 3, 2],
+      "mov": [6, 5, 4],
+      "fuel": 8,
+      "maxHeat": 3,
+      "armor": 7,
+      "structure": 8,
+      "strBands": { "red": [0, 2], "yellow": [3, 5], "green": [6, 8] },
+      "equipment": [
+        { "name": "Rockets", "weaponType": "Rocket", "damage": "kinetic", "range": { "min": 4, "max": 12 }, "count": 16, "atk": ["1", "1", "1"] },
+        { "name": "Plasma Gun", "weaponType": "Plasma Gun", "damage": "energy", "range": { "min": 0, "max": 14 }, "atk": ["3", "2", "1"] }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Doom Reaper Mk.I",
+      "unitType": "hulk",
+      "size": "Medium",
+      "points": 120,
+      "def": [4, 3, 2],
+      "atk": [3, 3, 2],
+      "mov": [8, 7, 6],
+      "fuel": 7,
+      "maxHeat": 3,
+      "armor": 6,
+      "structure": 5,
+      "strBands": { "red": [0, 2], "yellow": [3, 4], "green": [5, 5] },
+      "equipment": [
+        { "name": "Missiles", "weaponType": "Missile", "damage": "kinetic", "range": { "min": 8, "max": 22 }, "count": 4, "atk": ["3", "3", "3"] },
+        { "name": "Cannon", "weaponType": "Cannon", "damage": "kinetic", "range": { "min": 0, "max": 12 }, "ammo": "Armor Piercing", "atk": ["3", "2", "1"] }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Thunder Crusader Mk.I",
+      "unitType": "hulk",
+      "size": "Heavy",
+      "points": 195,
+      "def": [2, 2, 1],
+      "atk": [5, 4, 3],
+      "mov": [5, 4, 3],
+      "fuel": 11,
+      "maxHeat": 5,
+      "armor": 10,
+      "structure": 10,
+      "strBands": { "red": [0, 2], "yellow": [3, 6], "green": [7, 10] },
+      "equipment": [
+        { "name": "Cannon", "weaponType": "Cannon", "damage": "kinetic", "range": { "min": 0, "max": 16 }, "ammo": "Armor Piercing", "atk": ["4", "3", "3"] },
+        { "name": "Cannon", "weaponType": "Cannon", "damage": "kinetic", "range": { "min": 0, "max": 16 }, "ammo": "Explosive", "atk": ["4", "3", "3"] },
+        { "name": "Missiles", "weaponType": "Missile", "damage": "kinetic", "range": { "min": 8, "max": 24 }, "count": 4, "atk": ["3", "3", "3"] }
+      ]
+    }
+  ]
+}
