@@ -146,6 +146,69 @@
         { "name": "Cannon", "weaponType": "Cannon", "damage": "kinetic", "range": { "min": 0, "max": 16 }, "ammo": "Explosive", "atk": ["4", "3", "3"] },
         { "name": "Missiles", "weaponType": "Missile", "damage": "kinetic", "range": { "min": 8, "max": 24 }, "count": 4, "atk": ["3", "3", "3"] }
       ]
+    },
+    {
+      "id": 8,
+      "name": "Storm Guardian Mk.I",
+      "unitType": "hulk",
+      "size": "Heavy",
+      "points": 215,
+      "def": [2, 2, 1],
+      "atk": [5, 4, 3],
+      "mov": [5, 4, 3],
+      "fuel": 10,
+      "maxHeat": 5,
+      "armor": 10,
+      "structure": 10,
+      "strBands": { "red": [0, 3], "yellow": [4, 7], "green": [8, 10] },
+      "equipment": [
+        { "name": "Laser Cannon", "weaponType": "Laser Cannon", "damage": "energy", "range": { "min": 0, "max": 16 }, "atk": ["4", "4", "3"] },
+        { "name": "Laser Cannon", "weaponType": "Laser Cannon", "damage": "energy", "range": { "min": 0, "max": 16 }, "atk": ["4", "4", "3"] },
+        { "name": "Chain Guns", "weaponType": "Chain Gun", "damage": "kinetic", "range": { "min": 0, "max": 14 }, "ammo": "Armor Piercing", "atk": ["3", "3", "2"] },
+        { "name": "Chain Guns", "weaponType": "Chain Gun", "damage": "kinetic", "range": { "min": 0, "max": 14 }, "ammo": "Explosive", "atk": ["3", "3", "2"] }
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Specter Mk.I",
+      "unitType": "tank",
+      "size": "Light",
+      "points": 65,
+      "def": [4, 3, 3],
+      "atk": [2, 2, 1],
+      "mov": [8, 7, 6],
+      "fuel": 0,
+      "maxHeat": 2,
+      "armor": 4,
+      "structure": 4,
+      "strBands": { "red": [0, 1], "yellow": [2, 2], "green": [3, 4] },
+      "abilities": [
+        { "name": "Hovering", "text": "This unit ignores difficult terrain." }
+      ],
+      "equipment": [
+        { "name": "Plasma Cannons", "weaponType": "Plasma Cannon", "damage": "energy", "range": { "min": 0, "max": 11 }, "atk": ["2", "2", "1"] }
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Chimera Mk.I",
+      "unitType": "tank",
+      "size": "Light",
+      "points": 70,
+      "def": [4, 3, 3],
+      "atk": [2, 2, 1],
+      "mov": [8, 7, 6],
+      "fuel": 0,
+      "maxHeat": 2,
+      "armor": 4,
+      "structure": 4,
+      "strBands": { "red": [0, 1], "yellow": [2, 2], "green": [3, 4] },
+      "abilities": [
+        { "name": "Hovering", "text": "This unit ignores difficult terrain." }
+      ],
+      "equipment": [
+        { "name": "Rockets", "weaponType": "Rocket", "damage": "kinetic", "range": { "min": 4, "max": 12 }, "count": 16, "atk": ["1", "1", "1"], "note": "Rockets can be reloaded in deployment area, takes 1 full turn." }
+      ]
     }
   ]
 }

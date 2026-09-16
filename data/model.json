@@ -1,0 +1,24 @@
+{
+  "features": [
+    "atkS",
+    "defG",
+    "strv",
+    "wB",
+    "wE",
+    "wR",
+    "hover"
+  ],
+  "coefficients": {
+    "atkS": 1.2045,
+    "defG": 2.0465,
+    "strv": 6.7137,
+    "wB": 0.1629,
+    "wE": 0.3731,
+    "wR": 1.8876,
+    "hover": 2.4113
+  },
+  "specialtyArmorPerPoint": 2.5,
+  "rocketSalvoMultiplier": 4,
+  "roundTo": 5,
+  "notes": "Least-squares fit to the 10 official Mk.I cards, constrained so every term has a positive cost. Reproduces all 10 official point values after rounding to the nearest 5."
+}
