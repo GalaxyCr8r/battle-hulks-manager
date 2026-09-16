@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battle Hulks Unit Manager</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2312626f'/%3E%3Cpath d='M9 22V10h3l4 6 4-6h3v12h-3v-7l-4 6-4-6v7z' fill='%23e8edf0'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>Battle Hulks Unit Manager</h1>
+    <p>Official Mk.I unit stats, a reverse-engineered point-cost model, and a builder for your own units.</p>
+    <nav role="tablist">
+      <button data-tab="tab-roster" aria-selected="true">Roster</button>
+      <button data-tab="tab-builder" aria-selected="false">Builder</button>
+      <button data-tab="tab-model" aria-selected="false">Cost model</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="tab-roster">
+  <h2>Official units</h2>
+  <p class="lede">All ten Mk.I units from the starter set, transcribed from the unit card PDFs. Stats shown in green / yellow / red order — use the colour matching the unit's current Structure band.</p>
+  <div class="roster" id="roster"></div>
+</section>
+
+<section id="tab-builder" hidden>
+  <h2>Unit builder</h2>
+  <p class="lede">Adjust a chassis and its loadout; the point cost updates live from the fitted model. Load an official unit as a starting point, or build one from scratch.</p>
+
+  <div class="field" style="max-width:420px">
+    <label for="load-unit">Start from</label>
+    <select id="load-unit"></select>
+  </div>
+
+  <div class="builder">
+    <div id="builder-form"></div>
+
+    <aside class="readout">
+      <div class="total" id="total-points">0<small>Points</small></div>
+      <p class="raw" id="raw-points"></p>
+      <table>
+        <thead>
+          <tr><th>Component</th><th class="num">Value</th><th class="num">Pts</th></tr>
+        </thead>
+        <tbody id="breakdown"></tbody>
+      </table>
+      <div class="actions">
+        <button class="action" id="export" type="button">Export JSON</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="tab-model" hidden>
+  <h2>How the cost model was derived</h2>
+  <p class="lede">The rulebook has no unit-construction rules — point values appear only as fixed numbers printed on each card. This model is a least-squares fit to those ten published costs, so it is a reconstruction of the designer's pricing, not an official rule.</p>
+
+  <h3>The formula</h3>
+  <div class="formula">
+points = 1.205 x ATK(sum of bands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 2.047 x DEF(green)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 6.714 x Structure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 0.163 x (weapon attack dice, rockets counted x4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 0.373 x (attack dice on energy weapons)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 1.888 x (total weapon range in inches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 2.411 x Hovering<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   + 2.500 x specialty armor points<br>
+then round to the nearest 5.
+  </div>
+
+  <h3>Coefficients</h3>
+  <table>
+    <thead><tr><th>Term</th><th class="num">Points</th><th>Meaning</th></tr></thead>
+    <tbody id="coefficients"></tbody>
+  </table>
+
+  <h3>Validation against the official cards</h3>
+  <p class="lede">Every official unit is reproduced exactly once the model output is rounded to the nearest 5 points. Largest raw deviation before rounding: <b id="worst-resid">—</b> points.</p>
+  <table>
+    <thead>
+      <tr><th>Unit</th><th class="num">Card</th><th class="num">Model (raw)</th><th class="num">Rounded</th><th class="num">Match</th></tr>
+    </thead>
+    <tbody id="validation"></tbody>
+  </table>
+
+  <h3>What this model can and cannot tell you</h3>
+  <div class="note">
+    <p><b>Ten cards, seven free parameters.</b> The fit is tight, but it is not unique — other formulas also reproduce all ten costs. Treat the numbers as a consistent pricing scheme rather than the designer's actual arithmetic.</p>
+    <p><b>Armor and Structure cannot be separated.</b> Across the ten units they correlate at 0.96 (they are equal on six of ten cards), so the fit cannot tell what Armor costs on its own. Structure carries the whole durability term here; if you build a unit with unusually lopsided Armor, expect the model to misprice it.</p>
+    <p><b>Fuel, Max Heat and Movement came out near zero</b> and are excluded. That is a limitation of the sample, not a claim they are free — Dusk Reaper carries +2 Fuel over Storm Hulk and the model absorbs that elsewhere.</p>
+    <p><b>Specialty armor is the one non-fitted term.</b> Rulebook section 9.0 prices ablative and reactive armor at 5 points for 2, so that rate is fixed at 2.5 per point rather than fitted.</p>
+    <p><b>Weapon cost is carried almost entirely by range.</b> For Storm Hulk the range term is 75 of its 150 points while the attack-dice term is 4. The fit put the weight there because range varies more across the ten cards than dice do; a real construction system would probably split that differently, so exotic loadouts (a very long-ranged weak gun, or a short-ranged brutal one) are where this model is least trustworthy.</p>
+    <p><b>Expected error on a new unit</b> is around 3 points, based on leave-one-out cross-validation (worst case 7). For units close in shape to the official ten, it will be tighter.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Unit statistics transcribed from the Battle Hulks&trade; Mk.I unit cards. Battle Hulks is a trademark of Fat Dragon Games, &copy;2026 &mdash; this is an unofficial fan tool and is not affiliated with or endorsed by Fat Dragon Games.
+</footer>
+
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
